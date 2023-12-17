@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Edges, useGLTF } from "@react-three/drei";
+import { Edges, Outlines, useGLTF } from "@react-three/drei";
 import { Depth, Fresnel, LayerMaterial } from "lamina";
 import { useFrame } from "@react-three/fiber";
 
@@ -40,7 +40,7 @@ export function Model(props) {
       </LayerMaterial>
       <Edges color="black" />
        
-     
+      {/* <Outlines color={'#0000ff'} /> */}
 
       </mesh>
     </group>

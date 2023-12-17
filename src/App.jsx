@@ -1,4 +1,4 @@
-import { AccumulativeShadows, Center, Environment, MeshReflectorMaterial, OrbitControls, RandomizedLight } from "@react-three/drei";
+import { AccumulativeShadows, Center, Environment, Float, MeshReflectorMaterial, OrbitControls, PivotControls, PresentationControls, RandomizedLight } from "@react-three/drei";
 import "./App.css";
 import { Model } from "./Model";
 import { TitleText } from "./TitleText";
@@ -6,10 +6,10 @@ import { TitleText } from "./TitleText";
 export default function App() {
   return (
     <>
-      <OrbitControls />
+      {/* <OrbitControls makeDefault /> */}
       <Environment preset="night" blur={100}/>
-    {/* <ambientLight intensity={10} /> */}
-    
+    <ambientLight intensity={10} />
+
       <color attach="background" args={["#F5E000"]} />
 
       <AccumulativeShadows temporal scale={20} position={[0, -1.5, 0]} opacity={0.2} color="black">
@@ -19,8 +19,13 @@ export default function App() {
       <Center>
         <TitleText />
       </Center>
+      <Float>
+
+      <PresentationControls global>
 
       <Model />
+      </PresentationControls>
+      </Float>
     </>
   );
 }
