@@ -1,61 +1,73 @@
-import { Edges, Outlines, Text3D } from '@react-three/drei'
-import React from 'react'
+import { useGSAP } from "@gsap/react";
+import { Edges, Outlines, Text3D } from "@react-three/drei";
+import { RigidBody } from "@react-three/rapier";
+import gsap from "gsap";
+import React, { useEffect, useRef } from "react";
 
-export  function TitleText() {
+export function TitleText() {
+  const ref = useRef();
 
-const config = {
-  font:'./PR.json',
-  curveSegments:32,
-  bevelEnabled:true,
-  bevelSize:0.1,
-  bevelThickness:0.1,
-  receiveShadow:true,
-  castShadow:true
-}
+  const config = {
+    font: "./PR.json",
+    curveSegments: 50,
+    bevelEnabled: true,
+    bevelSize: 0.02,
+    bevelThickness: 0.05,
+    receiveShadow: true,
+    castShadow: true,
+  };
+
+  useGSAP(() => {
+    // ref.current.children.forEach(e=>{
+
+    //   gsap.from(e.rotation,{
+    //     x:-Math.PI/2,
+    //     duration:1,
+    //     ease:'elastic',
+    //     delay:gsap.utils.random([0,1])
+    //   })
+    // })
+
+    console.log(ref.current.children);
+  }, {});
+
   return (
+    <group ref={ref} position={[-5, 6, 3]} rotation={[-Math.PI/2,0,0]}>
+      <Text3D {...config} position={[.5, 0, 0]} size={1.8}>
+        C
+        <meshBasicMaterial color={"#000"} />
+        <Edges color={"#ffff8d"} />
+      </Text3D>
 
+      <Text3D {...config} position={[2.5, 0, 2.2]} size={1.5}>
+        A
+        <meshBasicMaterial color={"black"} />
+        <Edges color={"#ffff8d"} threshold={20} />
+      </Text3D>
 
+      <Text3D {...config} position={[3.5, 0, 1.4]} size={1.6}>
+        s
+        <meshBasicMaterial color={"black"} />
+        <Edges color={"#ffff8d"} />
+      </Text3D>
 
-    <group >
-    <Text3D {...config} position={[1,0,0]} size={1.7}>
-     R
-     <meshBasicMaterial color={'#000'} />
-     <Edges color={'#ffff8d'} />
-     {/* <Outlines color={'#0000ff'} /> */}
+      <Text3D {...config} position={[4.5, .5, 0]} size={1.8}>
+        T
+        <meshBasicMaterial color={"black"} />
+        <Edges color={"#ffff8d"} />
+      </Text3D>
 
-    </Text3D>
-    <Text3D {...config} position={[2.5,1,1]} size={1.4}>
-     E
-     <meshBasicMaterial color={'black'} />
-     <Edges color={'#ffff8d'}  threshold={20}  />
-     {/* <Outlines color={'#0000ff'} /> */}
+      <Text3D {...config} position={[6, 0, 0]} size={2.6}>
+        L
+        <meshBasicMaterial color={"black"} />
+        <Edges color={"#ffff8d"} />
+      </Text3D>
 
-    </Text3D>
-    <Text3D {...config} position={[3.5,0,1.4]} size={1.5}>
-     A
-     <meshBasicMaterial color={'black'} />
-     <Edges color={'#ffff8d'} />
-     {/* <Outlines color={'#0000ff'} /> */}
-
-    </Text3D>
-    <Text3D {...config} position={[5,0,-1]} size={1.5}>
-     D
-     <meshBasicMaterial color={'black'} />
-     <Edges color={'#ffff8d'} />
-     {/* <Outlines color={'#0000ff'} /> */}
-
-    </Text3D>
-    <Text3D {...config} position={[7,0,0]} size={2.5}>
-     Y
-     <meshBasicMaterial color={'black'} />
-     <Edges color={'#ffff8d'} />
-     {/* <Outlines color={'#0000ff'} /> */}
-
-    </Text3D>
-    
+      <Text3D {...config} position={[7, 0, 1]} size={1}>
+        e
+        <meshBasicMaterial color={"black"} />
+        <Edges color={"#ffff8d"} />
+      </Text3D>
     </group>
-
-
- 
-  )
+  );
 }
