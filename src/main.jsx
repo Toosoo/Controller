@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Canvas shadows camera={{ near: 0.1, far: 50, position: [0, 0, 7] }} className="r3f">
     <Suspense>
- <Physics gravity={[0, -9.81, 0]} debug>
+ <Physics gravity={[0, -9.81, 0]} >
 
 
       <App />
