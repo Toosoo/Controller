@@ -21,4 +21,9 @@ body {
 canvas {
   position: fixed;
   inset: 0;
+
+}
+
+.r3f {
+  touch-action:none
 }
