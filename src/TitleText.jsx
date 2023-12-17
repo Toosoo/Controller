@@ -17,19 +17,7 @@ export function TitleText() {
     castShadow: true,
   };
 
-  useGSAP(() => {
-    // ref.current.children.forEach(e=>{
-
-    //   gsap.from(e.rotation,{
-    //     x:-Math.PI/2,
-    //     duration:1,
-    //     ease:'elastic',
-    //     delay:gsap.utils.random([0,1])
-    //   })
-    // })
-
-    console.log(ref.current.children);
-  }, {});
+ 
 
   return (
     <group ref={ref} position={[-5, 6, 3]} rotation={[-Math.PI/2,0,0]}>
