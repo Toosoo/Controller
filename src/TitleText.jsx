@@ -20,7 +20,7 @@ export function TitleText() {
  
 
   return (
-    <group ref={ref} position={[-5, 6, 3]} rotation={[-Math.PI/2,0,0]}>
+    <group ref={ref} position={[-5, 6, 0]} rotation={[-Math.PI/2,0,0]}>
       <Text3D {...config} position={[.5, 0, 0]} size={1.8}>
         C
         <meshBasicMaterial color={"#000"} />

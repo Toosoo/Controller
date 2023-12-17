@@ -5,8 +5,7 @@ import { Depth, Fresnel, LayerMaterial } from "lamina";
 export function Model(props) {
   const { nodes, materials } = useGLTF("/untitled2.glb");
   return (
-    <group {...props} dispose={null} position={[0, 0, 0]} rotation={[0,0,0]} scale={2}>
-     
+    <group {...props} dispose={null} position={[0, 0, 0]} rotation={[0,Math.PI,0]} scale={2}>
         <mesh castShadow receiveShadow geometry={nodes.dsada001.geometry} rotation={[-Math.PI / 2, 0, 0]}>
           <LayerMaterial toneMapped={false}>
             <Depth colorA="#ff0080" colorB="black" alpha={1} mode="normal" near={0.5 * 0.1} far={0.5} origin={[0, 0, 0]} />
@@ -47,7 +46,6 @@ export function Model(props) {
           </LayerMaterial>
           <Edges color="black" />
         </mesh>
-
         <mesh castShadow receiveShadow geometry={nodes.dsad001.geometry} rotation={[-Math.PI / 2, 0, -0.917]}>
           <LayerMaterial toneMapped={false}>
             <Depth colorA="#ff0080" colorB="black" alpha={1} mode="normal" near={0.5 * 0.1} far={0.5} origin={[0, 0, 0]} />
@@ -58,7 +56,6 @@ export function Model(props) {
           </LayerMaterial>
           <Edges color="black" />
         </mesh>
-     
     </group>
   );
 }

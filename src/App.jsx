@@ -4,49 +4,28 @@ import { Model } from "./Model";
 import { TitleText } from "./TitleText";
 import { RigidBody } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
-import { Rock } from "./Rock";
+import  {Rocks}  from "./Rocks";
 
 export default function App() {
   return (
     <>
- <Perf position='top left' />
+      <Perf position='top left' />
       <OrbitControls makeDefault />
       <Environment preset="night" blur={100}/>
-       <ambientLight intensity={10} />
+      <ambientLight intensity={10} />
 
       <color attach="background" args={["#F5E000"]} />
 
-
-        <TitleText />
+      <TitleText />
 
       <Model />
 
-   {/* 
-    <mesh rotation={[-Math.PI/2,0,0]} position={[0,-2,0]} receiveShadow castShadow>
-      <planeGeometry args={[20,20,20]} />
-      <meshBasicMaterial transparent opacity={0}/>
-    </mesh> */}
+      <Rocks/>
 
-    
-
-
-    {/* <Instances
-      limit={10} 
-      range={10} 
-    >
-
-    <Rock/>
-
-       <Instance
-    color="red"
-    scale={2}
-    position={[1, 2, 3]}
-    rotation={[Math.PI / 3, 0, 0]}
-     /> 
-
-
-
-    </Instances> */}
+      <mesh rotation={[-Math.PI/2,0,0]} position={[0,-2,0]}>
+        <boxGeometry args={[60,60,2]}/>
+        <meshBasicMaterial transparent opacity={.9}/>
+      </mesh>
 
     </>
   );
