@@ -1,6 +1,5 @@
 import { useGSAP } from "@gsap/react";
 import { Edges, Outlines, Text3D } from "@react-three/drei";
-import { RigidBody } from "@react-three/rapier";
 import gsap from "gsap";
 import React, { useEffect, useRef } from "react";
 
@@ -22,55 +21,47 @@ export function TitleText() {
   return (
 
     
-    <group ref={ref} position={[-5, 6, 0]} rotation={[-Math.PI/2,0,0]}>
+    <group ref={ref} position={[-5, -1, 0]} >
 
-      <RigidBody colliders='hull'>
+
       <Text3D {...config} position={[.5, 0, 0]} size={1.8}>
-        C
+        P
         <meshBasicMaterial color={"#000"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
-     </RigidBody>
-
-      <RigidBody colliders='hull'>
+    
       <Text3D {...config} position={[2.5, 0, 2.2]} size={1.5}>
-        A
+        L
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} threshold={20} />
       </Text3D>
-     </RigidBody>
-
-      <RigidBody colliders='hull'>
+   
       <Text3D {...config} position={[3.5, 0, 1.4]} size={1.6}>
-        s
+        A
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
-     </RigidBody>
+   
 
-      <RigidBody colliders='hull'>
-      <Text3D {...config} position={[4.1, .5, 0]} size={1.8}>
-        T
+    
+      <Text3D {...config} position={[4.1, 0, -2]} size={1.8}>
+        Y
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
-     </RigidBody>
-
-      <RigidBody colliders='hull'>
-      <Text3D {...config} position={[5.5, 0, 1]} size={2.6}>
-        L
-        <meshBasicMaterial color={"black"} />
-        <Edges color={"#ffff8d"} />
-      </Text3D>
-     </RigidBody>
-
-      <RigidBody colliders='hull'>
-      <Text3D {...config} position={[7, 0, 1]} size={1}>
+    
+      <Text3D {...config} position={[5.5, 0, 1]} size={1}>
         e
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
-     </RigidBody>
+    
+      <Text3D {...config} position={[7, 0, 1]} size={2}>
+        R
+        <meshBasicMaterial color={"black"} />
+        <Edges color={"#ffff8d"} />
+      </Text3D>
+ 
     </group>
 
 
