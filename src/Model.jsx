@@ -5,13 +5,11 @@ import { Depth, Fresnel, LayerMaterial } from "lamina";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useFrame } from "@react-three/fiber";
-import { useBox, useCylinder, useTrimesh } from "@react-three/cannon";
+
 
 export function Model(props) {
   const { nodes, materials } = useGLTF("/untitled.glb");
-  const [ref, api] = useBox(() => ({ mass: 1 }));
-  // useFrame(({ clock }) => api.position.set(Math.sin(clock.getElapsedTime()) * 5, 0, 0))
-
+  
   return (
     <PresentationControls
       global={false}
@@ -21,12 +19,9 @@ export function Model(props) {
       rotation={[0, -0.8, 0]}
       polar={[-Math.PI / 3, Math.PI / 3]}
       azimuth={[-Math.PI / 1.4, Math.PI / 2]}
-      
       >
-
-
-      <group {...props} dispose={null} ref={ref}>
-        <mesh castShadow receiveShadow geometry={nodes.Object_5.geometry} position={[0, -0.25, 0.293]} scale={0.2}>
+    
+        <mesh castShadow receiveShadow geometry={nodes.Object_5.geometry} position={[0, 0, 0]} scale={0.2}>
           <LayerMaterial toneMapped={false}>
             <Depth colorA="#ff0080" colorB="black" alpha={1} mode="normal" near={0.5 * 0.1} far={0.5} origin={[0, 0, 0]} />
             <Depth colorA="blue" colorB="#f7b955" alpha={1} mode="add" near={2 * 0.2} far={2} origin={[0, 1, 1]} />
@@ -35,7 +30,7 @@ export function Model(props) {
           </LayerMaterial>
           <Edges color="black" />
         </mesh>
-      </group>
+   
     </PresentationControls>
   );
 }

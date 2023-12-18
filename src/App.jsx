@@ -4,12 +4,11 @@ import { Model } from "./Model";
 import { TitleText } from "./TitleText";
 import { RigidBody } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
-import { useBox, usePlane } from "@react-three/cannon";
 
 
 export default function App() {
   
-  const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0],position:[0,-1,0]}))
+  
 
 
   return (
@@ -19,23 +18,34 @@ export default function App() {
       <Environment preset="night" blur={100}/>
       <ambientLight intensity={10} />
 
-      {/* <color attach="background" args={["#F5E000"]} /> */}
-      <color attach="background" args={["#000"]} />
+      <color attach="background" args={["#F5E000"]} />
+      
 
+<group position={[0,1,0]}>
       <TitleText />
 
-  
       <Model />
   
-    
+  <RigidBody type="fixed" colliders='trimesh'>
 
-      
-      <mesh ref={ref} receiveShadow>
-      <planeGeometry args={[100,100]} />
+      <mesh rotation={[-Math.PI/2,0,0]}  receiveShadow >
+      <planeGeometry args={[20,10,10,10]} />
+      <shadowMaterial color="#171717" transparent opacity={0.3} />
+      </mesh>
+
+  </RigidBody>
+
+  <RigidBody type="fixed" colliders='trimesh'>
+      <mesh  position={[0,5,-5]} receiveShadow >
+      <planeGeometry args={[20,10,10,10]} />
       <shadowMaterial color="#171717" transparent opacity={0.3} />
       
       </mesh>
+  </RigidBody>
 
+
+  
+</group>
 
 
     <ambientLight />

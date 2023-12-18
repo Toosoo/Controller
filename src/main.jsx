@@ -4,18 +4,19 @@ import { Canvas } from "@react-three/fiber";
 import App from "./App.jsx";
 
 import { Loader } from "@react-three/drei";
-import { Debug, Physics,useBox } from "@react-three/cannon";
+import { Physics } from "@react-three/rapier";
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Canvas shadows camera={{ near: 0.1, far: 50, position: [0, 4, 7],rotation:[-.6,0,0] }} className="r3f">
+    <Canvas shadows camera={{ near: 0.1, far: 50, position: [0, 6, 9],rotation:[-.3,0,0] }} className="r3f">
     <Suspense>
-  <Physics>
-  <Debug color="black" scale={1}>
+  <Physics debug>
+ 
 
       <App />
 
-  </Debug>
+  
   </Physics>
     </Suspense>
     </Canvas>
@@ -24,4 +25,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 
 
-// https://dimapatsaraniuk.artstation.com/
