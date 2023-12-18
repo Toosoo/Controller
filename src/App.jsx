@@ -9,17 +9,18 @@ import { useBox, usePlane } from "@react-three/cannon";
 
 export default function App() {
   
-  const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0],position:[0,-1,0] }))
+  const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0],position:[0,-1,0]}))
 
 
   return (
     <>
       <Perf position='top left' />
-      <OrbitControls makeDefault />
+      {/* <OrbitControls makeDefault /> */}
       <Environment preset="night" blur={100}/>
       <ambientLight intensity={10} />
 
-      <color attach="background" args={["#F5E000"]} />
+      {/* <color attach="background" args={["#F5E000"]} /> */}
+      <color attach="background" args={["#000"]} />
 
       <TitleText />
 
@@ -30,9 +31,10 @@ export default function App() {
 
       
       <mesh ref={ref} receiveShadow>
-      <planeGeometry args={[1000, 1000]} />
+      <planeGeometry args={[100,100]} />
       <shadowMaterial color="#171717" transparent opacity={0.3} />
-    </mesh>
+      
+      </mesh>
 
 
 

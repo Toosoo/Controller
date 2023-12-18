@@ -8,15 +8,12 @@ import { Debug, Physics,useBox } from "@react-three/cannon";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Canvas shadows camera={{ near: 0.1, far: 50, position: [0, 0, 13] }} className="r3f">
+    <Canvas shadows camera={{ near: 0.1, far: 50, position: [0, 4, 7],rotation:[-.6,0,0] }} className="r3f">
     <Suspense>
   <Physics>
-  <Debug color="black" scale={1.1}>
-
-
+  <Debug color="black" scale={1}>
 
       <App />
-
 
   </Debug>
   </Physics>

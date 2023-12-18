@@ -25,39 +25,39 @@ export function TitleText() {
 
 
       <Text3D {...config} position={[.5, 0, 0]} size={1.8}>
-        P
+        C
         <meshBasicMaterial color={"#000"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
     
       <Text3D {...config} position={[2.5, 0, 2.2]} size={1.5}>
-        L
+        a
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} threshold={20} />
       </Text3D>
    
       <Text3D {...config} position={[3.5, 0, 1.4]} size={1.6}>
-        A
+        N
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
    
 
     
-      <Text3D {...config} position={[4.1, 0, -2]} size={1.8}>
-        Y
+      <Text3D {...config} position={[4.1, 0, -2]} size={3}>
+        N
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
     
       <Text3D {...config} position={[5.5, 0, 1]} size={1}>
-        e
+        o
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
     
       <Text3D {...config} position={[7, 0, 1]} size={2}>
-        R
+        N
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
