@@ -8,16 +8,25 @@ import {
 import "./App.css";
 import { Model } from "./Model";
 import { TitleText } from "./TitleText";
-import { RigidBody } from "@react-three/rapier";
+import { Physics, RigidBody } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
+import { useState } from "react";
 
 
 export default function App() {
 
+ 
+  const [active,setActive] = useState(true);
 
+  const switcher = () =>{
+    setActive(!active)
+  }
 
+  window.addEventListener('click',switcher)
   return (
-    <>
+  
+    <Physics debug paused={active}>
+
       <Perf position="top left" />
       {/* <OrbitControls makeDefault /> */}
       <Environment preset="night" blur={100} />
@@ -28,11 +37,7 @@ export default function App() {
 
       <group position={[0, 1, 0]}>
         <TitleText />
-
         <Model />
-
-
-
 
         <RigidBody type="fixed" friction={0}>
           <mesh rotation={[-Math.PI / 2, 0, 0]}>
@@ -71,6 +76,7 @@ export default function App() {
             <Wireframe simplify={true} fillOpacity={0} stroke={"#000"} fillMix={1} thickness={0.04} />
           </mesh>
         </RigidBody>
+
         <RigidBody type="fixed">
           <mesh rotation={[0, -1.59, 0]} position={[10, 10, 0]} receiveShadow>
             <planeGeometry args={[20, 20, 10, 20]} />
@@ -84,6 +90,7 @@ export default function App() {
 
       <ambientLight />
       <directionalLight position={[10, 10, 10]} castShadow shadow-mapSize={[2048, 2048]} />
-    </>
+      </Physics>
+
   );
 }

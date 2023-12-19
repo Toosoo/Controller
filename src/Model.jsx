@@ -12,7 +12,7 @@ export function Model(props) {
   const { nodes, materials } = useGLTF("/untitled.glb");
   
   return (
-    <RigidBody type="fixed">
+    <RigidBody >
     <PresentationControls
       global={false}
       cursor={true}

@@ -15,11 +15,8 @@ export function TitleText() {
 
   useEffect(() => {
   
-    // You can access individual instanced by their index
-    // rigidBodies.current[1].applyImpulse({ x: 0, y: 10, z: 0 }, true);
-    // rigidBodies.current.at(2).applyImpulse({ x: 0, y: 10, z: 0 }, true);
+   
 
-    
   }, []);
 
   const clicked = (e)=>{
