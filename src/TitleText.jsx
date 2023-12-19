@@ -48,12 +48,12 @@ export function TitleText() {
  
   return (
     
-    <group  position={[-5, 5, 0]} >
+    <group  position={[-5, 4, 0]} >
 
 
     <RigidBody ref={bodyA} >
       <Text3D  {...config}  size={1.8} onClick={clicked}>
-        C
+        G
         <meshBasicMaterial color={"#000"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
@@ -66,7 +66,7 @@ export function TitleText() {
    <RigidBody  >
 
       <Text3D  {...config} position={[2.5, 0, 2.2]} size={1.5} ref={bodyB}>
-        a
+        R
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} threshold={20} />
       </Text3D>
@@ -75,34 +75,42 @@ export function TitleText() {
       </RigidBody>
 
       <RigidBody>
-      <Text3D {...config} position={[3.5, 0, 1.8]} size={1.5}>
-        N
+      <Text3D {...config} position={[3.5, 0, 2]} size={1.5}>
+        A
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
       </RigidBody>
-  
+
 
 
       <RigidBody  >
       <Text3D {...config} position={[4.1, 0, -2]} size={3}>
-        N
+       V
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
       </RigidBody> 
 
       <RigidBody >
-      <Text3D {...config} position={[5.5, 0, 1]} size={1}>
-        o
+      <Text3D {...config} position={[5.5, 0, 2]} size={1}>
+        i
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
       </RigidBody>
 
        <RigidBody  >
-      <Text3D {...config} position={[7, 0, 1]} size={1.5}>
-        N
+      <Text3D {...config} position={[5.5, 0, 1]} size={1.5}>
+        T
+        <meshBasicMaterial color={"black"} />
+        <Edges color={"#ffff8d"} />
+      </Text3D>
+      </RigidBody> 
+
+      <RigidBody  >
+      <Text3D {...config} position={[6.3, 0, 2]} size={1.5}>
+        y
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
