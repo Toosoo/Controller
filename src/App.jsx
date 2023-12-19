@@ -1,9 +1,10 @@
-import { AccumulativeShadows, Center, Environment, Float, Instance, Instances, MeshReflectorMaterial, OrbitControls, PivotControls, PresentationControls, RandomizedLight } from "@react-three/drei";
+import { AccumulativeShadows, Center, Edges, Environment, Float, Instance, Instances, MeshReflectorMaterial, OrbitControls, Outlines, PivotControls, PresentationControls, RandomizedLight, Wireframe } from "@react-three/drei";
 import "./App.css";
 import { Model } from "./Model";
 import { TitleText } from "./TitleText";
 import { RigidBody } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
+import { MeshBasicMaterial } from "three";
 
 
 export default function App() {
@@ -26,22 +27,43 @@ export default function App() {
 
       <Model />
   
-  <RigidBody type="fixed" colliders='trimesh'>
+   <RigidBody type="fixed" >
+      <mesh rotation={[-Math.PI/2,0,0]}   >
+      <planeGeometry args={[20,20,10,10]} />
+     
+      <Wireframe
+       simplify={false}
+        fillOpacity={0}
+        stroke={'#000'}
+        fillMix={1}
+      />
+      </mesh>
 
-      <mesh rotation={[-Math.PI/2,0,0]}  receiveShadow >
+      <mesh rotation={[-Math.PI/2,0,0]} position={[0,.1,0]}  receiveShadow >
       <planeGeometry args={[20,10,10,10]} />
       <shadowMaterial color="#171717" transparent opacity={0.3} />
       </mesh>
 
-  </RigidBody>
+  </RigidBody> 
 
-  <RigidBody type="fixed" colliders='trimesh'>
-      <mesh  position={[0,5,-5]} receiveShadow >
-      <planeGeometry args={[20,10,10,10]} />
-      <shadowMaterial color="#171717" transparent opacity={0.3} />
+   <RigidBody type="fixed" >
+
+      <mesh  position={[0,6,-5]} receiveShadow>
+      <planeGeometry args={[20,12,10,10]} />
+      <Wireframe
+       simplify={false}
+        fillOpacity={0}
+        stroke={'#000'}
+        fillMix={1}
       
+    
+      />
+
       </mesh>
-  </RigidBody>
+  
+
+  </RigidBody> 
+
 
 
   

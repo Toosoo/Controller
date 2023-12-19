@@ -20,9 +20,9 @@ export function TitleText() {
  
   return (
     
-    <group  position={[-5, 0, 0]} >
+    <group  position={[-5, 10, 0]} >
 
-   {/* <RigidBody  colliders='hull' >
+    <RigidBody   >
       <Text3D  {...config}  size={1.8}>
         C
         <meshBasicMaterial color={"#000"} />
@@ -30,7 +30,7 @@ export function TitleText() {
       </Text3D>
    </RigidBody>
     
-   <RigidBody  colliders='hull'>
+   <RigidBody  >
       <Text3D  {...config} position={[2.5, 0, 2.2]} size={1.5}>
         a
         <meshBasicMaterial color={"black"} />
@@ -38,22 +38,22 @@ export function TitleText() {
       </Text3D>
       </RigidBody>
 
-      <RigidBody  colliders='hull'>
+      <RigidBody  >
       <Text3D {...config} position={[3.5, 0, 1.8]} size={1.5}>
         N
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
       </RigidBody>
-      <RigidBody  colliders='hull'>
+      <RigidBody  >
       <Text3D {...config} position={[4.1, 0, -2]} size={3}>
         N
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
-      </RigidBody> */}
+      </RigidBody> 
 
-      <RigidBody  colliders='hull' angularDamping={0}>
+      <RigidBody  angularDamping={5}>
       <Text3D {...config} position={[5.5, 0, 1]} size={1}>
         o
         <meshBasicMaterial color={"black"} />
@@ -61,13 +61,13 @@ export function TitleText() {
       </Text3D>
       </RigidBody>
 
-      {/* <RigidBody  colliders='hull'>
+       <RigidBody  >
       <Text3D {...config} position={[7, 0, 1]} size={1.5}>
         N
         <meshBasicMaterial color={"black"} />
         <Edges color={"#ffff8d"} />
       </Text3D>
-      </RigidBody> */}
+      </RigidBody> 
     </group>
   );
 }
