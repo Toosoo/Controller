@@ -20,7 +20,8 @@ export function Model(props) {
     
 
     <RigidBody 
-    position={[0, 3, 0]}
+    position={[-1, 4, 0]}
+    rotation={[0,-1,0]}
     colliders='hull'
     restitution={1}
     ref={ref}
@@ -35,6 +36,7 @@ export function Model(props) {
         polar={[-Math.PI / 3, Math.PI / 3]}
         azimuth={[-Math.PI / 1.4, Math.PI / 2]}> */}
         <mesh castShadow receiveShadow geometry={nodes.Object_5.geometry}  scale={0.25}>
+        
           <LayerMaterial toneMapped={false}>
             <Depth colorA="#ff0080" colorB="black" alpha={1} mode="normal" near={0.5 * 0.1} far={0.5} origin={[0, 0, 0]} />
             <Depth colorA="blue" colorB="#f7b955" alpha={1} mode="add" near={2 * 0.2} far={2} origin={[0, 1, 1]} />

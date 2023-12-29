@@ -1,16 +1,18 @@
-import { Environment, OrbitControls, Text3D, Wireframe, useVideoTexture } from "@react-three/drei";
+import { AccumulativeShadows, Environment, OrbitControls, RandomizedLight, Text3D, Wireframe, useGLTF, useHelper, useVideoTexture } from "@react-three/drei";
 import "./App.css";
 import { Model } from "./Model";
 import { TitleText } from "./TitleText";
 import { InstancedRigidBodies, Physics, RigidBody } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import * as THREE from "three";
 
 export default function App() {
   const [sound] = useState(new Audio("/hit.mp3"));
   const [active, setActive] = useState(true);
-
-  const instancesCount = 100
+  const light = useRef()
+  useHelper(light,THREE.DirectionalLightHelper,1)
+  const instancesCount = 1000
   const instances = useMemo(()=>{
 
     const instances = []
@@ -18,7 +20,11 @@ export default function App() {
     for(let i = 0; i<instancesCount ; i++) {
       instances.push({
         key:'instance' + i,
-        position:[0,1,0 ],
+        position:[
+        (Math.random()- .5) * 8,
+          6+i*.2,
+          (Math.random()- .5) * 8
+         ],
         rotation:[0,0,0]
       })
     }
@@ -37,16 +43,21 @@ export default function App() {
     sound.volume = Math.random();
     sound.play();
   };
+  const { nodes, materials } = useGLTF("/untitled.glb");
 
   window.addEventListener("click", switcher);
   return (
-    <Physics paused={active}>
+    <Physics  paused={active}>
       <Perf position="top left" />
       {/* <OrbitControls makeDefault /> */}
       <Environment preset="night" blur={100} />
-      <ambientLight intensity={10} />
 
-      <color attach="background" args={["#4e3534"]} />
+     
+      <directionalLight position={[9, 10, 9]} castShadow shadow-mapSize={[2048, 2048]} scale={10}  />
+
+      <ambientLight   intensity={.5} />
+
+
       <color attach="background" args={["#F5E000"]} />
 
 
@@ -58,49 +69,47 @@ export default function App() {
         <Model />
 
 
-    <InstancedRigidBodies instances={instances} position={[0,2,0]}>
-
+    <InstancedRigidBodies restitution={.5} instances={instances} position={[0,5,0]}>
       <instancedMesh  args={[null,null,instancesCount]} castShadow>
-      <sphereGeometry args={[.3]}/>
-      <meshBasicMaterial color='black'/>
+    <sphereGeometry args={[.2]}/>
+    <meshBasicMaterial color='#282828'/> 
       </instancedMesh>
     </InstancedRigidBodies>
 
 
 
 
-        <RigidBody type="fixed">
-          <mesh rotation={[0, 0, 0]} position={[0, 0, 10]}>
-            <planeGeometry args={[20, 20, 10, 20]} />
-          </mesh>
-        </RigidBody>
-
-        <RigidBody type="fixed">
-          <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 10, 0]}>
-            <planeGeometry args={[20, 20, 10, 20]} />
-          </mesh>
-        </RigidBody>
-
+       
+       
         {/*  floor */}
-        <RigidBody type="fixed" friction={0} onCollisionEnter={hitSound}>
           <mesh rotation={[-Math.PI / 2, 0, 0]}>
             <planeGeometry args={[20, 20, 10, 20]} />
 
             <Wireframe simplify={true} fillOpacity={0} stroke={"#000"} fillMix={1} thickness={0.03} />
-          </mesh>
-          <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.1, 0]} receiveShadow>
-            <planeGeometry args={[20, 10, 10, 10]} />
-            <shadowMaterial color="#171717" transparent opacity={0.3} />
-          </mesh>
+          </mesh> 
+        <RigidBody type="fixed" friction={0} onCollisionEnter={hitSound}>
+
+          <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.1, 0]} receiveShadow>
+            <boxGeometry args={[20, 20,2]} />
+            <shadowMaterial color="#171717"  opacity={.1}  />
+          </mesh> 
         </RigidBody>
 
         {/* back wall */}
         <RigidBody type="fixed">
-          <mesh position={[0, 10, -5.8]} receiveShadow>
+          <mesh position={[0, 10, -6.5]} receiveShadow>
             <planeGeometry args={[20, 20, 10, 20]} />
             <Wireframe simplify={true} fillOpacity={0} stroke={"#000"} fillMix={1} thickness={0.04} />
           </mesh>
-        </RigidBody>
+        </RigidBody> 
+
+        {/* front wall */}
+         <RigidBody type="fixed">
+          <mesh position={[0, 10, 10]} receiveShadow>
+            <planeGeometry args={[20, 20, 10, 20]} />
+            
+          </mesh>
+        </RigidBody> 
 
         {/* left wall */}
 
@@ -109,19 +118,19 @@ export default function App() {
             <planeGeometry args={[20, 20, 10, 20]} />
             <Wireframe simplify={true} fillOpacity={0} stroke={"#000"} fillMix={1} thickness={0.04} />
           </mesh>
-        </RigidBody>
+        </RigidBody> 
 
         {/* right wall */}
-        <RigidBody type="fixed">
-          <mesh rotation={[0, -1.59, 0]} position={[10, 10, 0]} receiveShadow>
+      <RigidBody type="fixed">
+          <mesh rotation={[0, -1.59, 0]} position={[10, 5, 0]} receiveShadow>
             <planeGeometry args={[20, 20, 10, 20]} />
             <Wireframe simplify={true} fillOpacity={0} stroke={"#000"} fillMix={1} thickness={0.04} />
           </mesh>
         </RigidBody>
+        
       </group>
 
-      <ambientLight />
-      <directionalLight position={[10, 10, 10]} castShadow shadow-mapSize={[2048, 2048]} />
+      
     </Physics>
   );
 }
